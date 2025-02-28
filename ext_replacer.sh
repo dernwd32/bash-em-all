@@ -31,11 +31,10 @@ done
 
 for file in ${FILES[@]};
 do
-	fullpath=$(realpath "$file")
-	oldpath=$fullpath
-
+	oldpath=$(realpath "$file")
+	
 	if [[ "$oldpath" =~ $EXT$ ]]; then
-		newpath="${fullpath%.$EXT}.$REP"
+		newpath="${oldpath%.$EXT}.$REP"
 		echo "~~ Переименовываю $oldpath > $newpath"
 		mv "$oldpath" "$newpath"
 	else
